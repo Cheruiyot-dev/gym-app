@@ -143,6 +143,21 @@ return [
     |
     */
 
+     /*
+    |--------------------------------------------------------------------------
+    | Fortify Controllers
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify custom controllers to use for the various Fortify
+    | features. This allows you to customize the behavior of Fortify without
+    | modifying the core implementation.
+    |
+    */
+
+    'controllers' => [
+        'register' => \App\Http\Controllers\RegisteredUserController::class,
+    ],
+
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
