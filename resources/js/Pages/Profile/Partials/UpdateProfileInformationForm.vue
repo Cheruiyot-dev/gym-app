@@ -17,8 +17,11 @@ const form = useForm({
     _method: 'PUT',
     name: props.user.name,
     email: props.user.email,
+    role_id: props.user.role_id,
     photo: null,
 });
+
+console.log("user info:", props.user);
 
 const verificationLinkSent = ref(null);
 const photoPreview = ref(null);
@@ -140,6 +143,19 @@ const clearPhotoFileInput = () => {
                     autocomplete="name"
                 />
                 <InputError :message="form.errors.name" class="mt-2" />
+            </div>
+            <!-- Name -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="role_id" value="role_id" />
+                <TextInput
+                    id="role_id"
+                    v-model="form.role_id"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="name"
+                />
+                <InputError :message="form.errors.role_id" class="mt-2" />
             </div>
 
             <!-- Email -->

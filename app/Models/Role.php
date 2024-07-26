@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Role extends Model
 {
@@ -17,31 +19,15 @@ class Role extends Model
     /**
      * The users that belong to the role
      */
-    public function users()
+    public function user() : HasOne
+    
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasOne(User::class);
     }
 
 
-    /**
-     * Find a role by its slug
-     * 
-     * @params string $slug
-     * @return \App\Models\Role|null
-     */
-    public static function findBySlug( $slug)
-    {
-        return static::where('slug', $slug)->first();
-    }
 
-    /**
-     * Check if the role has a specific slug.
-     *
-     * @param string $slug
-     * @return bool
-     */
-    public function hasSlug($slug)
-    {
-        return $this->slug === $slug;
-    }
+   
+
+   
 }
