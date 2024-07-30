@@ -72,6 +72,18 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    // Client profile relationship
+    public function clientProfile(): HasOne
+    {
+        return $this->hasOne(ClientProfile::class);
+    }
+
+
+    // Trainer profile relationship
+    public function trainerProfile(): HasOne
+    {
+        return $this->hasOne(TrainerProfile::class);
+    }
    
     
 }
