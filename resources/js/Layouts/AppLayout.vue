@@ -210,6 +210,10 @@ const logout = () => {
                                 <div class="font-medium text-sm text-gray-500">
                                     {{ $page.props.auth.user.email }}
                                 </div>
+                                <!-- Check for user role_id -->
+                                <div class="font-medium text-sm text-gray-500">
+                                    {{ $page.props.auth.user.role_id }}
+                                </div>
                             </div>
                         </div>
 

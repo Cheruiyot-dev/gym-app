@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -27,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -64,29 +67,11 @@ class User extends Authenticatable
     }
 
     // user relationship with role
-
-    public function roles()
+    public function role(): BelongsTo
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
-    // user has a role
-
-    public function hasRole($role)
-    {
-        if (is_string($role)) {
-            return $this->roles->contains('slug', $role);
-        }
-
-        return !!$role->intersect($this->roles)->count();
-    }
-
-    public function assignRole($role)
-    {
-        if (is_string($role)) {
-            $role = Role::findBySlug($role);
-        }
-
-        $this->roles()->sync($role, false);
-    }
+   
+    
 }

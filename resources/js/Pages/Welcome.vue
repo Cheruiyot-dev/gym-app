@@ -93,8 +93,14 @@ function handleImageError() {
                 </header>
 
                 <main class="mt-6 h-screen flex items-center justify-center">
-                    <div >
-                        <p>
+                    <div>
+                        <Link
+                            href="/"
+                            class="text-black bg-white border border-black px-4 py-2  rounded hover:bg-gray-100"
+                        >
+                            Become a Trainer
+                        </Link>
+                        <p class="pt-8">
                             Build Trainer services products and also provide
                             information about the business
                         </p>
